@@ -1,0 +1,7 @@
+Semáforo sincronização de processos. Inicialmente o primeiro processo filho irá escrever
+a string "Sistemas ", libertando um semáforo que o segundo processo filho está à espera, 
+escrevendo este a string "de ", libertando outro semáforo que o terceiro processo filho
+está à espera, escrevendo a string "Computadores - ", libertando outro semáforo que o primeiro
+processo filho está à espera, escrevendo a string "a ", libertando outro semáforo que o 
+segundo processo filho está à espera, escrevendo a string "melhor ", libertando outro semáforo
+que o terceiro processo filho está à espera, escrevendo por fim, finalmente, a string "disciplina!"

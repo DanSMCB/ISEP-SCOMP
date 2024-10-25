@@ -1,0 +1,5 @@
+semáforo exclusão mútua, o escritor irá esperar para o semáforo ficar livre incrementar o número
+de escritores e para escrever a nova string e depois irá libertar o semáforo após a alteração, 
+decrementando o número de escritores se sair do programa
+o leitor inicialmente espera outro semáforo ficar livre para incrementar o número de leitores e depois 
+libera-o, decrementando o número de leitores

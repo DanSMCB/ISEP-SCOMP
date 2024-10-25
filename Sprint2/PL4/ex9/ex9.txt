@@ -1,0 +1,2 @@
+Semáforo exclusão mútua. Cada processo espera pelo semáforo para 
+proceder, executando pelo tempo indicado pelo utilizador e por fim libertando o semáforo.

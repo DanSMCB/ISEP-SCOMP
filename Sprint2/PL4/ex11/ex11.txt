@@ -1,0 +1,5 @@
+semáforo exclusão mútua:
+o vendedor irá esperar o semáforo para incrementar o número de bilhetes que vende,
+libertando-o após a incrementação, repetidamente
+o cliente irá esperar o semáforo e compra o bilhete que está à venda mais recente, libertando
+o semáforo após a compra

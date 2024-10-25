@@ -1,0 +1,3 @@
+Semáforo sincronização de processos. O processo filho irá executar "buy_chips()", libertando
+um semáforo para o processo pai possa executar "buy_beer()", assim libertando o outro semáforo
+para que ambos os processos agora possam executar "eat_and_drink()"

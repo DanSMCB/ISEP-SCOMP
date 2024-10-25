@@ -1,0 +1,3 @@
+Semáforo exclusão mútua. É feito um ciclo for onde em cada iteração é esperado que o
+semáforo fique livre por um período de tempo aleatório entre 0 e 12 segundos, fazendo se seguida
+operações internas e por fim libertando o semáforo.

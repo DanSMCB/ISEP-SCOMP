@@ -1,0 +1,2 @@
+Semáforo exclusão mútua. Cada processo filho vai esperar o semáforo ficar livre para fazer 
+as operações internas assim libertando o semáforo no fim
