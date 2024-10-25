@@ -1,0 +1,4 @@
+9. b) The process was ended.
+   d) The process quits.
+   f) The signal was handled.
+   h) The job number 1 will be terminated.

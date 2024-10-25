@@ -1,0 +1,1 @@
+Neste programa, não há necessidade de um mecanismo de sincronização porque a função pipe em si já fornece uma forma de sincronização. A função pipe cria um canal de comunicação unidirecional entre o processo pai e seus processos filhos, permitindo que eles se comuniquem de forma sincronizada

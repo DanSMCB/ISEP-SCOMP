@@ -1,0 +1,1 @@
+a) Não é possível garantir que o output fique ordenado pois a ordenação vai depender do escalonamento feito pelo sistema operativo.

@@ -1,0 +1,11 @@
+(a) A função sigaction() é mais adequada para lidar com sinais em comparação com a função signal(). Isso ocorre porque a função sigaction() oferece maior control e flexibilidade ao lidar com sinais. Com sigaction(), podemos especificar como o sinal deve ser tratado, incluindo a capacidade de bloquear outros sinais durante o tratamento de um sinal, especificar flags e estabelecer um novo handler de sinal. Já a função signal() tem uma interface mais simples, mas não oferece muitos recursos para personalizar o tratamento de sinais.
+
+(b) A função sigaction() é usada para registrar um novo manipulador para um sinal específico ou para obter informações sobre o tratamento atual de um sinal. Chamamos a função da seguinte forma:
+"int sigaction(int signum, const struct sigaction *act, struct sigaction *oldact);"
+
+signum: o número do sinal para o qual se deseja manipular o tratamento. É um valor inteiro que representa o número do sinal, como SIGINT ou SIGUSR1.
+
+act: um pointer para uma estrutura sigaction que especifica a ação a ser tomada para o sinal especificado. Isso inclui um novo manipulador de sinal (handler), flags de sinal e sinais que devem ser bloqueados enquanto o sinal está a ser tratado. Se for passado um ponteiro NULL, o sinal é ignorado.
+
+oldact: um pointer para uma estrutura sigaction que é preenchida com a ação anterior para o sinal. Isso permite que esta verifique a ação anterior, se necessário. Se for passado um pointer NULL, a ação anterior será ignorada.
+

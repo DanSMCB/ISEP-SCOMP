@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <unistd.h>
+#include <string.h>
+
+int main() {
+    int fd[2];
+
+    // cria o pipe
+    if(pipe(fd) == -1) {
+        perror("Pipe failed.\n");
+        return 1;
+    }
+
+    // cria um novo processo filho
+    pid_t p = fork();
+
+    // verifica se houve erro na criação do processo
+    if (p < 0) {
+        perror("Fork failed.\n");
+        return 1;
+    }
+
+    int num;
+    char str[100];
+
+    if (p > 0) {
+        // processo pai
+        close(fd[0]); // fecha a leitura uma vez que vai escrever
+        printf("Write a number: \n");
+        scanf("%d", &num);
+        printf("Write a string: \n");
+        scanf("%s", str);
+        write(fd[1], &num, sizeof(num)); // escreve o número no pipe
+        write(fd[1], &str, sizeof(str)+1); // escreve a string no pipe
+        close(fd[1]); // fecha a escrita
+    }
+
+    if (p == 0) {
+        // processo filho
+        close(fd[1]); // fecha a escrita uma vez que vai ler
+        read(fd[0], &num, sizeof(num)); // lê o número do pipe
+        read(fd[0], &str, sizeof(str)+1); // lê a string do pipe
+        close(fd[0]); // fecha a leitura
+        printf("Child process: \n");
+        printf("Number: %d \n", num);
+        printf("String: %s \n", str);
+    }
+}

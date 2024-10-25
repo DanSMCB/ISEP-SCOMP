@@ -1,0 +1,6 @@
+a) printf("2. x = 0")
+   printf("3. 1234; x = 0")
+   printf("1. x = 2")
+   printf("3. 0; x = 2")
+
+b) Não pois depende do escalonamento. 

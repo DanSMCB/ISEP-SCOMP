@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <unistd.h>
+#include <string.h>
+
+int main() {
+    int fd[2]; 
+
+    // cria o pipe
+    if(pipe(fd) == -1) { // a função pipe() cria um pipe e retorna 0 se bem sucedido, -1 se ocorrer um erro
+        perror("Pipe failed.\n"); 
+        return 1;
+    }
+
+    // cria um novo processo filho
+    pid_t p = fork(); // fork() cria um novo processo duplicando o processo pai
+
+    // verifica se houve erro na criação do processo
+    if (p < 0) {
+        perror("Fork failed.\n");
+        return 1;
+    }
+
+    int num;
+    char str[100];
+
+    if (p > 0) {
+        // processo pai
+        close(fd[0]); // Fecha a leitura do pipe, já que o processo pai só escreve
+        printf("Write a number: \n");
+        scanf("%d", &num); 
+        printf("Write a string: \n");
+        scanf("%s", str); 
+        write(fd[1], &num, sizeof(num)); // Escreve o número no pipe
+        write(fd[1], &str, sizeof(str)+1); // Escreve a string no pipe (incluindo o caractere nulo final)
+        close(fd[1]); // Fecha a escrita do pipe
+    }
+
+    if (p == 0) {
+        // processo filho
+        close(fd[1]); // Fecha a escrita do pipe
+        read(fd[0], &num, sizeof(num)); // Lê o número do pipe
+        read(fd[0], &str, sizeof(str)+1); // Lê a string do pipe (incluindo o caractere nulo final)
+        close(fd[0]); // Fecha a leitura do pipe
+        printf("Child process: \n");
+        printf("Number: %d \n", num); // Imprime o número lido
+        printf("String: %s \n", str); // Imprime a string lida
+    }
+    return 0;
+}
